@@ -39,6 +39,7 @@ char *col_names[]={
 "COLOR_GRADIENTINACTIVECAPTION"
 };
 
+//  A B G R
 int def_colors[_MAX_COLORS_]={
 	0x00FF3838,
 	0x00000000,
@@ -62,7 +63,7 @@ int def_colors[_MAX_COLORS_]={
 	0x00008000,
 	0x00FF3838,
 	0x00000000,
-	0x00E0E0E0,
+	0x00303030,
 	0x00000000,
 	0x00E1FFFF,
 	0x00B8B4B8,
@@ -122,7 +123,7 @@ int def_contrast[_MAX_COLORS_]={
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00000000
+	0x00000000,
 };
 int alt_contrast[_MAX_COLORS_]={
 //aqua
@@ -290,10 +291,12 @@ int load_default()
 	int i;
 	int temp[_MAX_COLORS_],index[_MAX_COLORS_];
 
-	for(i=0;i<_MAX_COLORS_;i++)
-		index[i]=i;	
-	for(i=0;i<_MAX_COLORS_;i++)
+	for(i=0;i<_MAX_COLORS_;i++){
+		index[i]=i;
+	}
+	for(i=0;i<_MAX_COLORS_;i++){
 		temp[i]=GetSysColor(i);
+	}
 
 	if(0==memcmp(temp,def_colors,_MAX_COLORS_*4)){
 		int load_alt=FALSE;
