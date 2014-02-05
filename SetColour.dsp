@@ -25,7 +25,7 @@ CFG=SetColour - Win32 Debug
 # PROP AllowPerConfigDependencies 0
 # PROP Scc_ProjName ""
 # PROP Scc_LocalPath ""
-CPP=snCl.exe
+CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
@@ -51,7 +51,7 @@ RSC=rc.exe
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-LINK32=snLink.exe
+LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
 # SUBTRACT LINK32 /pdb:none
@@ -78,7 +78,7 @@ LINK32=snLink.exe
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-LINK32=snLink.exe
+LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
 # SUBTRACT LINK32 /pdb:none
@@ -94,46 +94,7 @@ LINK32=snLink.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\COLORS.asm
-
-!IF  "$(CFG)" == "SetColour - Win32 Release"
-
-# PROP Ignore_Default_Tool 1
-USERDEP__COLOR="colours.bin"	"contrast.bin"	
-# Begin Custom Build
-IntDir=.\Release
-InputPath=.\COLORS.asm
-InputName=COLORS
-
-"$(IntDir)\$(InputName).obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	nasmw.exe -t -f  win32 -o$(IntDir)\$(InputName).obj -Xvc $(InputName).asm
-
-# End Custom Build
-
-!ELSEIF  "$(CFG)" == "SetColour - Win32 Debug"
-
-# PROP Ignore_Default_Tool 1
-USERDEP__COLOR="colours.bin"	"contrast.bin"	
-# Begin Custom Build
-IntDir=.\Debug
-InputPath=.\COLORS.asm
-InputName=COLORS
-
-"$(IntDir)\$(InputName).obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	nasmw.exe -t -f  win32 -o$(IntDir)\$(InputName).obj -Xvc $(InputName).asm
-
-# End Custom Build
-
-!ENDIF 
-
-# End Source File
-# Begin Source File
-
 SOURCE=.\SetColour.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\text.h
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -144,9 +105,5 @@ SOURCE=.\text.h
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # End Group
-# Begin Source File
-
-SOURCE=.\ReadMe.txt
-# End Source File
 # End Target
 # End Project
