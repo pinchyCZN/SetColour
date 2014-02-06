@@ -282,6 +282,7 @@ int have_arg(const char *ARG,int argc,char *argv[])
 int print_cmd()
 {
 	printf("hold shift or control to load alt contrast scheme\n");
+	printf("l,r,u,d or middle button overrides to classic color\n");
 	printf("cmd line options: -save -custom={num}\n");
 	printf("ini section\n[KEYS]\ndelay=1\nspeed=23\n\n");
 	return 0;
@@ -304,6 +305,16 @@ int load_default()
 			load_alt=TRUE;
 		if(GetAsyncKeyState(VK_SHIFT)&0x8000)
 			load_alt=TRUE;
+		if(GetAsyncKeyState(VK_MBUTTON)&0x8000)
+			load_alt=FALSE;
+		if(GetAsyncKeyState(VK_UP)&0x8000)
+			load_alt=FALSE;
+		if(GetAsyncKeyState(VK_DOWN)&0x8000)
+			load_alt=FALSE;
+		if(GetAsyncKeyState(VK_LEFT)&0x8000)
+			load_alt=FALSE;
+		if(GetAsyncKeyState(VK_RIGHT)&0x8000)
+			load_alt=FALSE;
 
 		if(load_alt)
 			SetSysColors(_MAX_COLORS_,index,alt_contrast);
