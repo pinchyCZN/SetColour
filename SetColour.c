@@ -284,6 +284,7 @@ int print_cmd()
 	printf("hold shift or control to load alt contrast scheme\n");
 	printf("l,r,u,d or middle button overrides to classic color\n");
 	printf("cmd line options: -save -custom={num}\n");
+	printf("                  -? -h -help\n");
 	printf("ini section\n[KEYS]\ndelay=1\nspeed=23\n\n");
 	return 0;
 }
@@ -375,6 +376,11 @@ int main(int argc,char *argv[])
 	int custom=-1;
 	
 	print_cmd();
+	if(have_arg("-?",argc,argv)
+		|| have_arg("-h",argc,argv)
+		|| have_arg("-help",argc,argv)){
+		exit(0);
+	}
 	set_ini_path();
 	printf("ini file:%s\n",ini_file);
 	get_custom_num(&custom,argc,argv);
